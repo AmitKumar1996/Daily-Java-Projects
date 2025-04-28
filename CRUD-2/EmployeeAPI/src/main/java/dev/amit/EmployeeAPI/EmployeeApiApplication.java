@@ -1,13 +1,13 @@
-package dev.amit.EmployeeAPI_04_28;
+package dev.amit.EmployeeAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmployeeApi0428Application {
+public class EmployeeApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeApi0428Application.class, args);
+		SpringApplication.run(EmployeeApiApplication.class, args);
 	}
 
 }
