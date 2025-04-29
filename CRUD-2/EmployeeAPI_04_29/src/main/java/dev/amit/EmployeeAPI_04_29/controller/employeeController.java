@@ -5,10 +5,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,20 +58,26 @@ public class employeeController {
 		
 	}
 	
-	@PostMapping("/employee/{EmpId}")
+	@PutMapping("/employee/{EmpId}")
 	public ResponseEntity<?> updateEmployeeById(@PathVariable("EmpId") long empid, @RequestBody Employee employee){
 		
 	Optional<Employee> foundEmp=employeeRepository.findById(empid);
 	
+	System.out.println("Hi1");
+	
 	if(foundEmp.isPresent()) {
+		System.out.println("Hi2");
 		
 	    Employee emp=  foundEmp.get();
 	    
 	    emp.setEmpCity(employee.getEmpCity());
 	    emp.setEmpName(employee.getEmpName());
 	    
+	    System.out.println("Hi3");
+	    
 	  Employee UpdatedEmp = employeeRepository.save(emp);
 	    
+	  System.out.println("Hi4");
 	    return new ResponseEntity<>(UpdatedEmp, HttpStatus.OK);
 		
 	}
@@ -77,6 +86,35 @@ public class employeeController {
 	}
 		
 	
+		
+	}
+	
+	@DeleteMapping("/employee/{Id}")
+	public ResponseEntity<?> deleteById(@PathVariable("Id") long id) {
+	
+	Optional<Employee>  emp=	employeeRepository.findById(id);
+	
+	if(emp.isPresent()) {
+		employeeRepository.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}else {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	}
+		
+	
+	@DeleteMapping("/employee")
+  public ResponseEntity<?> deleteAll(){
+	List<Employee> allEmp=	employeeRepository.findAll();
+	
+	if(allEmp.isEmpty()) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+		employeeRepository.deleteAll();
+		return new ResponseEntity<>(HttpStatus.OK);
+	  
+  
+		
 		
 	}
 }
