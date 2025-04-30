@@ -20,11 +20,30 @@ import dev.amit.EmployeeAPI_04_29.entity.Employee;
 import dev.amit.EmployeeAPI_04_29.repository.employeeRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/amit")
 
 public class employeeController {
+	
+	
 	@Autowired
 	employeeRepository employeeRepository;
+	
+	
+	
+	
+	
+	
+//	@PostMapping("/sumit")
+//	public String createEmp(@RequestBody Employee  employee ) {
+//		
+//		
+//		employeeRepository.save(employee);
+//		
+//		return "Data is saved";
+//		
+//	}
+	
+	
 	
 	
 	@PostMapping("/employee")
@@ -32,9 +51,22 @@ public class employeeController {
 		 
 	Employee emp=	employeeRepository.save(employee);
 		
-		return new ResponseEntity<>("Employee Ecreated "+emp, HttpStatus.CREATED);
+		return new ResponseEntity<>("Employee created "+emp, HttpStatus.CREATED);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/employee")
 	public ResponseEntity<?> getEmployee(){
@@ -68,7 +100,7 @@ public class employeeController {
 	if(foundEmp.isPresent()) {
 		System.out.println("Hi2");
 		
-	    Employee emp=  foundEmp.get();
+	 Employee emp = foundEmp.get();
 	    
 	    emp.setEmpCity(employee.getEmpCity());
 	    emp.setEmpName(employee.getEmpName());

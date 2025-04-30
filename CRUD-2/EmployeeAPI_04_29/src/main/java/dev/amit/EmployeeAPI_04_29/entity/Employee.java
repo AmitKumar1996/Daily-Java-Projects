@@ -11,6 +11,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 
+
+
 public class Employee {
 	
 	@Id
@@ -23,6 +25,9 @@ public class Employee {
 	
 	@Column
 	private String empCity;
+	
+	
+	private String Emial;
 
 	public Long getEmpId() {
 		return empId;
