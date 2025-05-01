@@ -1,0 +1,126 @@
+1. 
+Amazon operates numerous warehouses, with each warehouse /holding inventoryli] units of a particular product. You and your co-worker are responsible for dispatching these items to fulfill customer orders, following a specific process:
+﻿﻿﻿When dispatching from warehouse i, you begin by reducing the inventory of the ith warehouse by dispatch1 units.
+﻿﻿﻿After your dispatch, your co-worker reduces the inventory by dispatch2 units.
+﻿﻿﻿This process repeats until the inventory of the ith warehouse reaches zero or becomes negative (i.e., inventory] ≤ 0).
+﻿﻿﻿For every warehouse that is emptied during your dispatch, you and your co-worker collectively earn 1, credit.
+Your co-worker has the option to skip their turn, but they can only do this a limited number of times, defined by skips.
+Your task is to determine the best strategy to maximize the total credits that both you and your co-worker can earn together.
+Example
+n = 6
+inventory = [10, 6, 12, 8, 15, 1]
+dispatch1 = 2
+dispatch2 = 3
+skips = 3
+Rank Confidentia
+-419c-a94b-
+c60-155b
+• An optimal dispatch strategy is as follows:
+
+﻿﻿﻿Your co-worker skips 2 turns, allowing you to empty the inventory of the 15t warehouse (Inventory: 10 → 8 → 5 - 3 → 1 → -1).
+﻿﻿﻿Your co-worker doesn't skip any turns, and you empty the inventory of the 2nd warehouse (Inventory: 6 → 4 → 1 .(1- →
+﻿﻿﻿Your co-worker doesn't skip any turns, and you empty the inventory of the 3rd warehouse (Inventory: 12 → 10 → 7 → 5 → 2 → 0).
+﻿﻿﻿Your co-worker skips 1 turn, and you drain the inventory of the 4th warehouse (Inventory: 8 → 6 → 3 → 1 → -1).
+﻿﻿﻿Your co-worker doesn't skip any turns, and they empty the inventory of the 5th warehouse (Inventory: 15 → 13 → 10 → 8 → 5 → 3 → 0).
+﻿﻿﻿Your co-worker doesn't skip any turns, and you empty the inventory of the 6th warehouse (Inventory: 1 → -1)
+As a result, the 1st t, 2nd, 3rd, 4th, and 6th warehouses were completely dispatched by you, and the two of you
+collectively earned 5 credits, which is the maximum possible in this scenario.
+Hence, the answer is 5.
+Function Description
+Complete the function getMaximumCredits in the editor below.
+getMaximumCredits has the following parameters:
+int inventoryin]: An array of integers denoting the inventory level of each warehouse. int dispatch1: An integer indicating your dispatch level per turn. int dispatch2: An integer indicating your co-worker's dispatch level per turn. int skips: An integer specifying the maximum number of times your co-worker can skip their turn.
+Return
+int: the maximum number of credits both of you can achieve collectively.
+Constraints
+• 1<=n<=10^5
+﻿﻿1 ≤ inventoryli] ≤ 10^9
+﻿﻿1 ≤ dispatch1, dispatch2, skips ≤ 10^9
+Input
+6
+3
+7
+17
+21
+12
+19
+4
+3
+2
+Function:
+
+the size of inventory n = 6
+inventory = [3, 7, 17, 21, 12, 19]
+
+dispatch1 = 4
+dispatch2 = 3
+skips = 2
+
+Explanation
+A recommended strategy for dispatching inventory from the warehouses would be:
+﻿﻿﻿Your co-worker does not skip any turns, and you dispatch from the 1st warehouse until it is empty (Inventory: 3 → -1).
+﻿﻿﻿Your co-worker skips 1 turn, allowing you to empty the 2nd warehouse (Inventory: 7 → 3 → -1).
+﻿﻿﻿Your co-worker does not skip any turns, and you empty the 3rd warehouse (Inventory: 17 → 13 → 10 → 6 → 3 0 → -1).
+﻿﻿﻿Your co-worker skips 1 turn, and you empty the 4th warehouse (Inventory: 21 → 17 → 14 → 10 → 7 → 3 → - 1).
+﻿﻿﻿Your co-worker does not skip any turns and empties the 5th warehouse (Inventory: 12 → 8 → 5 → 1 → -2).
+6. Your co-worker does not skip any turns and empties the 6th warehouse (Inventory: 19 → 15 → 12 - 8 → 5 → 1
+160944
+6BAdL
+As a result, the 1 st
+,2nd
+, 3rd , and 4th warehouses are emptied on your turn, earning you 4 credits. This is
+the maximum number of credits possible.
+Hence, the answer is 4
+
+
+2. 
+The developers at Amazon IAM are working on identifying vulnerabilities in their key generation process. The key is represented by an array of n integers, where the th integer is denoted by keyli]. The vulnerability factor of the array (key) is defined as the maximum length of a subarray that has a Greatest Common Divisor (GCD) greater than 1.
+You are allowed to make a maximum of maxChange modifications to the array, where each modification consists of changing any one element in the array to any other value.
+Given an integer array key and an integer maxChange, find the least possible vulnerability factor of the key after making at most maxChange changes.
+Note: The length of an empty subarray is considered to be zero.
+Example
+key = [2, 2, 4, 9, 6]
+maxChange = 1
+The length of key, n = 5. Here are some possible changes Armake:
+﻿﻿﻿Change the first element to 3. The array becomes key = [3, 2, 4, 9, 6]. The length of the longest subarray with a GCD greater than 1 is 2 for the subarrays [2, 4] and [9, 6].
+﻿﻿﻿Change the third element of the array to 5. The array becomes key = [2, 2, 5, 9, 6]. In this case, the length of the longest subarray with a GCD greater than 1 is 2 for the subarrays [2, 2] and [9, 6].
+Since no operation can reduce the maximum length of any subarray with a GCD greater than 1 to less than
+• 2, the vulnerability factor of the key is 2.
+Function Description
+
+Complete the function findVulnerabilityFactor in the editor below.
+findVulnerabilityFactor has the following parameters:
+int key[n]: the original encryption key
+int maxChange: the maximum number of elements that can be changed
+Returns
+int: the least possible vulnerability factor of the key
+Constraints
+﻿﻿1 <= n≤ 105
+﻿﻿0 ≤ maxChange ≤ n
+﻿﻿1 ≤ keyli] ≤ 10^9
+Input
+6
+5
+10
+20
+10
+15
+5
+2
+Function 
+key[] size n=6
+Key =[5,10,20,10,15,5]
+maxchange = 2
+
+
+Explanation
+Here are some possible changes to achieve the least possible vulnerability factor:
+1. First Change:
+﻿﻿Modify the third element of the array to 2 and the fourth element to 3, so the updated key becomes [5, 10, 2, 3, 15, 5].
+﻿﻿In this case, the maximum length of a subarray with a GCD greater than 1 is 2. This applies to several subarrays:
+﻿﻿(5, 10], [10, 2], [3, 15], [15, 5]
+2. Second Change:
+﻿﻿Modify the first element of the array to 7 and the fourth element to 9, so the updated key becomes [7, 10, 20, 9, 15, 5].
+﻿﻿Here as well, the maximum length of a subarray with a GCD greater than 1 is 2, for the following subarrays:
+﻿﻿[10, 20], [15, 5]
+Hence, after making the changes, the least possible vulnerability factor of the key is 2.
