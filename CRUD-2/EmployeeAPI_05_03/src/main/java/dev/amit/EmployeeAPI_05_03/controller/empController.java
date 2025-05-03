@@ -25,12 +25,14 @@ public class empController {
 	@PostMapping("/employee")
 	public ResponseEntity<?> createUser(@RequestBody Employee employee){
 		
-		empRepository.save(employee);
+		System.out.println("hi1");
+		
+	Employee emp=	empRepository.save(employee);
+	System.out.println(emp);
 		
 		
-		return new ResponseEntity<>("Employee created"+employee, HttpStatus.CREATED);
-		
-		
+		return new ResponseEntity<>(emp, HttpStatus.CREATED);
+
 		
 	}
 

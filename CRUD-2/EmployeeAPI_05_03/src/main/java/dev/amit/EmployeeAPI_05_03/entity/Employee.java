@@ -18,10 +18,10 @@ public class Employee {
 	private Long empId;
 	
 	@Column
-	private String EmpName;
+	private String empName;
 	
 	@Column
-	private String EmpCity;
+	private String empCity;
 
 	public Long getEmpId() {
 		return empId;
@@ -32,37 +32,39 @@ public class Employee {
 	}
 
 	public String getEmpName() {
-		return EmpName;
+		return empName;
 	}
 
 	public void setEmpName(String empName) {
-		EmpName = empName;
+		this.empName = empName;
 	}
 
 	public String getEmpCity() {
-		return EmpCity;
+		return empCity;
 	}
 
 	public void setEmpCity(String empCity) {
-		EmpCity = empCity;
+		this.empCity = empCity;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", EmpName=" + EmpName + ", EmpCity=" + EmpCity + "]";
+		return "Employee [empId=" + empId + ", empName=" + empName + ", empCity=" + empCity + "]";
 	}
 
 	public Employee(Long empId, String empName, String empCity) {
 		super();
 		this.empId = empId;
-		EmpName = empName;
-		EmpCity = empCity;
+		this.empName = empName;
+		this.empCity = empCity;
 	}
 
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 	
 	
