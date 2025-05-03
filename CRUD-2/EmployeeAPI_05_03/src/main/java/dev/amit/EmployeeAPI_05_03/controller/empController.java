@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,10 +59,48 @@ public class empController {
 	else {
 		return new ResponseEntity<>(empid+" is not found", HttpStatus.NOT_FOUND);
 	}
-	
 
-		
+	
 		
 	}
 	
+	
+	  @PutMapping("/employee/{empId}") 
+	  public ResponseEntity<?> updateEmployee(@PathVariable("empId") long empid, @RequestBody Employee employee){
+		Optional<Employee> emplo =empRepository.findById(empid);
+		
+		if(emplo.isPresent()) {
+		        Employee updEmp=emplo.get();
+		        
+		        updEmp.setEmpCity(employee.getEmpCity());
+		        updEmp.setEmpName(employee.getEmpName());
+		        empRepository.save(updEmp);
+		        return new ResponseEntity<>(updEmp, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>("Employee Not Found", HttpStatus.NOT_FOUND);
+		}
+
+		
+	}
+		
+	  @DeleteMapping("/employee")
+	  public ResponseEntity<?> deletEmployee(){
+		  return new ResponseEntity<>("DeletAll Employee", HttpStatus.OK);
+	  }
+	
+      @DeleteMapping("/employee/{empId}")
+	  public ResponseEntity<?> DeletById(@PathVariable("empId") long empid){
+    	  
+    Optional<Employee> empi=	  empRepository.findById(empid);
+    
+    if(empi.isPresent()) {
+    empRepository.deleteById(empid);
+    return new ResponseEntity<>("Employee Deleted by Id "+empi.get(), HttpStatus.OK);
+    }
+    else {
+    	return new ResponseEntity<>("Employee not found :- "+empid, HttpStatus.OK);
+    }
+    	 
+      }
 }
