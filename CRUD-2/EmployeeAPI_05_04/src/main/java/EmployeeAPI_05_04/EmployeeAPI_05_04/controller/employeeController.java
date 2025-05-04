@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -52,7 +53,7 @@ public ResponseEntity<?> getById(@PathVariable("EmpId") long empid){
 }
 
 
-@PostMapping("/employee/{EmpId}")
+@PutMapping("/employee/{EmpId}")
 public  ResponseEntity<?> updateEmployee(@PathVariable("EmpId") long empid, @RequestBody Employee employee) {
 	
 Optional<Employee> empl=	empRepository.findById(empid);
