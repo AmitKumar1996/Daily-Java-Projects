@@ -21,7 +21,7 @@ import com.hsbc.HsbcProjectEmployee.repository.empRepository;
 
 @RestController
 @RequestMapping("/api")
-public class empController {
+public class EmployeeController {
 
 
 @RestController
